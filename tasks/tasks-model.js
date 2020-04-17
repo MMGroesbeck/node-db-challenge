@@ -8,11 +8,11 @@ module.exports = {
 function getTasks() {
     return db
         .select(
-            "tasks.id",
-            "tasks.description",
+            "tasks.id as taskID",
+            "tasks.description as taskDescription",
             "tasks.completed as taskCompleted",
-            "p.name",
-            "p.description",
+            "p.name as projectName",
+            "p.description as projectDescription",
             "p.completed as projectCompleted"
         )
         .from("tasks")
