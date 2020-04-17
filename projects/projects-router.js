@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
             console.log(err);
             res.status(500).json({ message: "Failed to get projects." });
         });
-})
+});
 
 router.post("/", (req, res) => {
     if (req.body.name) {
@@ -25,7 +25,9 @@ router.post("/", (req, res) => {
                 console.log(err);
                 res.status(500).json({ message: "Error while saving new project." });
             });
+    } else {
+        res.status(400).json({ message: "Project name is required." });
     }
-})
+});
 
 module.exports = router;
