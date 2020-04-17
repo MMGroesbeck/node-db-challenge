@@ -15,6 +15,19 @@ router.get("/", (req, res) => {
         });
 });
 
+router.get("/:id", (req, res) => {
+    const { id } = req.params
+    Projects.getProjByIdDetails(id)
+        .then(proj => {
+            res.json(proj);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ message: "Failed to get project." });
+        });
+
+})
+
 router.post("/", (req, res) => {
     if (req.body.name) {
         Projects.addProject(req.body)
